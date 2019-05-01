@@ -7,8 +7,8 @@
 	$config['pbs'] 		= 'http://silvermine.io/openrtb2/auction';
 	$config['pbs_port'] = 8000;
 	$congig['apnxs_id']	= '1db9eb10-7c39-48ac-aad6-cc96184f1c8c';
-    $congig['bidders'] 	= '
-    						{
+	$congig['bidders'] 	= '
+							{
 								"appnexus": {
 									"video": {
 										"skippable": true,
@@ -24,18 +24,18 @@
 	/* ****** SETUP & VALIDATE REQUEST ****** */
 
 	// Obtain POST json content into $RTB array
-    $raw_req 	= file_get_contents( 'php://input' );
-    $RTB 		= json_decode( $raw_req, TRUE );
-    // Validate required oRTB values, fail if not found
-    if ( !$RTB['id'] || !$RTB['imp'][0]['id'] ) {
+	$raw_req 	= file_get_contents( 'php://input' );
+	$RTB 		= json_decode( $raw_req, TRUE );
+	// Validate required oRTB values, fail if not found
+	if ( !$RTB['id'] || !$RTB['imp'][0]['id'] ) {
 		header("HTTP/1.0 500 Invalid Request");
 		exit();
-    }
+	}
 
 
 	/* ****** MODIFY RTB OBJECT ****** */
 
-    // Set up PBS Bidders JSON and add each bidder to each imp object
+	// Set up PBS Bidders JSON and add each bidder to each imp object
 	$bidders = json_decode( $congig['bidders'], TRUE );
 	foreach( $RTB['imp'] as $count => $imp ) {
 		foreach ( $bidders as $biddername => $bidderconfig ) {
