@@ -1,11 +1,11 @@
 <?php
 
 	/* ****** SETUP VARS ****** */
-	error_reporting(0); ini_set('display_errors', '0'); 
+	//error_reporting(0); ini_set('display_errors', '0'); 
 	$RTB 	= array();
 	$congig = array();
-	$config['pbs']		= 'http://silvermine.io/openrtb2/auction';
-	$config['pbs_port']	= 8000;
+	$config['pbs']		= 'http://prebid.adnxs.com/pbs/v1/openrtb2/auction';
+	$config['pbs_port']	= 80;
 	$congig['apnxs_id']	= '1db9eb10-7c39-48ac-aad6-cc96184f1c8c';
 	$congig['bidders']	= '
 							{
@@ -15,7 +15,7 @@
 										"playback_method": ["auto_play_sound_off"]
 									},
 									"use_pmt_rule": false,
-									"placementid": 13232361
+									"placementId": 15884805
 								}
 							}
 						';
@@ -60,6 +60,8 @@
 
 	$bid_response 	= curl_exec( $ch );
 	$bid_status 	= curl_getinfo( $ch, CURLINFO_RESPONSE_CODE);
+
+
 	curl_close($ch);
 
 
