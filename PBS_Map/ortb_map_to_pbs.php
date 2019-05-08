@@ -15,7 +15,7 @@
 										"playback_method": ["auto_play_sound_off"]
 									},
 									"use_pmt_rule": false,
-									"placement_id": 13232361
+									"placementid": 13232361
 								}
 							}
 						';
