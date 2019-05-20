@@ -1,0 +1,66 @@
+{
+	"id": "5cd2bea0-b7ce-4e1a-8876-1ffd622ae356",
+	"imp": [{
+		"id": "2d5b71b74f3aca",
+		"banner": {
+			"format": [{
+				"w": 300,
+				"h": 250
+			}, {
+				"w": 300,
+				"h": 600
+			}],
+			"w": 300,
+			"h": 250,
+			"topframe": 1
+		},
+		"tagid": "0420420421",
+		"secure": 0,
+		"ext": {
+			"appnexus": {
+				"placement_id": 14302300
+			}
+		}
+	}, {
+		"id": "3763ae091561de",
+		"banner": {
+			"format": [{
+				"w": 728,
+				"h": 90
+			}, {
+				"w": 970,
+				"h": 250
+			}],
+			"w": 728,
+			"h": 90,
+			"topframe": 1
+		},
+		"tagid": "0420420421",
+		"secure": 0,
+		"ext": {
+			"appnexus": {
+				"placement_id": 14302300,
+				"keywords": "lotameSegs=439847,lotameSegs=446197,lotameSegs=446198"
+			}
+		}
+	}],
+	"site": {
+		"domain": "silvermine.io",
+		"page": "http://silvermine.io/ozonepb0515index.html?pbjs_debug=true",
+		"publisher": {
+			"id": "OZONENUK0001"
+		}
+	},
+	"device": {
+		"ua": "Mozilla5.0 (Macintosh; Intel Mac OS X 10_11_1) AppleWebKit537.36 (KHTML, like Gecko) Chrome74.0.3729.131 Safari537.36",
+		"geo": {},
+		"ip": "64.20.78.179",
+		"h": 356,
+		"w": 1440
+	},
+	"test": 1,
+	"at": 1,
+	"source": {
+		"tid": "5cd2bea0-b7ce-4e1a-8876-1ffd622ae356"
+	}
+}

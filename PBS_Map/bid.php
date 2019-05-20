@@ -29,7 +29,7 @@
 	// Validate required oRTB values, fail if not found
 	if ( !$RTB['id'] || !$RTB['imp'][0]['id'] ) {
 		header("HTTP/1.0 500 Bad Request Data");
-		log_message("HTTP/1.0 500 Bad Request Data: " . $raw_req, 1, 90);
+		log_message("HTTP/1.0 500 Bad Request Data: " . $raw_req, 1, 20);
 		exit();
 	}
 
@@ -58,18 +58,17 @@
 	}
 	// Set the AppNexus PBS account ID, but first backup any existing ID to a new field
 	if ( $RTB['app']['id'] ) {
-		$RTB['app']['publisher']['supply_id'] = $RTB['site']['publisher']['id'];
-		$RTB['app']['publisher']['id'] = $config['apnxs_id'];
+	   $RTB['app']['publisher']['supply_id'] = $RTB['site']['publisher']['id'];
+	   $RTB['app']['publisher']['id'] = $config['apnxs_id'];
 	} else {
-		$RTB['site']['publisher']['supply_id'] = $RTB['site']['publisher']['id'];
-		$RTB['site']['publisher']['id'] = $config['apnxs_id'];
-	}
-
+            $RTB['site']['publisher']['supply_id'] = $RTB['site']['publisher']['id'];
+	    $RTB['site']['publisher']['id'] = $config['apnxs_id'];
+        }
 	if ( $RTB['user'] === array() ) {
 		unset( $RTB['user'] );
 	}
-	$RTB['tmax'] = 500;
 
+	$RTB['tmax'] = 500;
 
 	/* ****** SEND REQUEST TO PBS ****** */
 
@@ -87,14 +86,13 @@
 
 	curl_close($ch);
 
-//	echo json_encode( $RTB ); die();
 
 	/* ****** SEND A RESPONSE BASED ON PBS ****** */
 	header("Content-Type: application/json");
 	switch ( $bid_status ) {
 		case 204:
 			header("HTTP/1.0 204 EMPTY");
-			log_message("HTTP/1.0 204", 0, 2);
+			log_message("HTTP/1.0 204", 0, 1);
 			break;
 		case 404:
 			header("HTTP/1.0 404 Endpoint not found");
@@ -106,22 +104,22 @@
 			break;
 		case 500:
 			header("HTTP/1.0 500 Invalid Response");
-			log_message("HTTP/1.0 500 Invalid Response: " . $raw_req, 1, 90);
+			log_message("HTTP/1.0 500 Invalid Response: " . $raw_req, 1, 20);
 			break;
 		case 200:
 			// Only output the response if it is a valid bid
 			$bid_response_arr = json_decode( $bid_response, TRUE );
 			if ( $bid_response_arr['seatbid'] ) {
 				print( $bid_response );
-				log_message("SUCCESS for : " . $raw_req . " :: " . $bid_response, 0, 100);
+				log_message("SUCCESS for : " . $raw_req . " :: " . $bid_response, 0, 10);
 			} else {
 				header("HTTP/1.0 204 EMPTY");
-				log_message("HTTP/1.0 204 B" , 0, 20);
+				log_message("HTTP/1.0 204 B: ", 0, 1);
 			}
 			break;
 		default:
 			header("HTTP/1.0 " . $bid_status );
-			log_message("HTTP/1.0 " . $bid_status . ": " . $raw_req, 1, 30);
+			log_message("HTTP/1.0 " . $bid_status . ": " . $raw_req, 1, 10);
 	}
 
 
@@ -135,4 +133,5 @@
 			}
 		}
 	}
+
 
