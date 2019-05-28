@@ -67,7 +67,11 @@
 		unset( $RTB['user'] );
 	}
 
-	$RTB['tmax'] = 500;
+	// Get rid of wseat, which limits buyers chosen
+	unset( $RTB['wseat'] );
+
+	// Always have a timeout of 650ms
+	$RTB['tmax'] = 650;
 
 	/* ****** SEND REQUEST TO PBS ****** */
 
